@@ -813,8 +813,6 @@ window.WAPI.sendMessage = async function (id, message) {
     if(id==='status@broadcast') return 'Not able to send message to broadcast';
     let chat = WAPI.getChat(id);
     if((!chat && !id.includes('g') || chat.msgs.models.length == 0)) {
-        var contact = WAPI.getContact(id)
-        if(!contact || !contact.isMyContact) return 'Not a contact';
         await Store.Chat.find(Store.Contact.get(id).id)
         chat = WAPI.getChat(id);
     }
