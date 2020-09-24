@@ -113,8 +113,6 @@ function create(_sessionId, config, customUserAgent) {
                         config.chromiumArgs = (config === null || config === void 0 ? void 0 : config.chromiumArgs) || [];
                         customUserAgent = config.customUserAgent;
                     }
-                    if (sessionId === '' || config.sessionId)
-                        sessionId = config.sessionId;
                     prettyFont = cfonts_1.default.render(('@OPEN-WA|WHATSAPP|AUTOMATOR'), {
                         font: '3d',
                         color: 'candy',
