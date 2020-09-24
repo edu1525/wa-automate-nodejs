@@ -11,7 +11,6 @@ resources
 .release-it.json
 CHANGELOG.md
 compact-keepchangelog.hbs
-prebuild.ts
 release-image.js
 sandbox.ts
 tempchangelog.txt
