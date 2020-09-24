@@ -11,7 +11,7 @@
     "@open-wa/wa-automate": "./bin/server.js"
   },
   "scripts": {
-    "build": "rm -rf dist/ && tsc && npm run build:lib && npm run build:config-for-bin",
+    "build": "rm -rf dist/ && npm run build:lib && npm run build:config-for-bin",
     "build:skipmid": "tsc && npm run build:lib",
     "build:lib": "ts-node prebuild.ts",
     "docs": "ts-node docfix.ts && rm -rf docs/ && typedoc",
