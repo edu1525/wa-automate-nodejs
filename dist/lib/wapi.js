@@ -35,7 +35,7 @@ if (!window.Store||!window.Store.Msg) {
                 { id: "addAndSendMsgToChat", conditions: (module) => (module.addAndSendMsgToChat) ? module.addAndSendMsgToChat : null },
                 { id: "sendMsgToChat", conditions: (module) => (module.sendMsgToChat) ? module.sendMsgToChat : null },
                 { id: "Catalog", conditions: (module) => (module.Catalog) ? module.Catalog : null },
-                { id: 'Perfil',conditions: (module) => module.__esModule === true && module.setPushname && !module.getComposeContents? module  : null,},
+                { id: "bp", conditions: (module) => (module.default&&module.default.toString&&module.default.toString().includes('bp_unknown_version')) ? module.default : null },
                 { id: "MsgKey", conditions: (module) => (module.default&&module.default.toString().includes('MsgKey error: obj is null/undefined')) ? module.default : null },
                 { id: "Parser", conditions: (module) => (module.convertToTextWithoutSpecialEmojis) ? module.default : null },
                 { id: "Builders", conditions: (module) => (module.TemplateMessage && module.HydratedFourRowTemplate) ? module : null },
@@ -815,6 +815,7 @@ window.WAPI.sendMessage = async function (id, message) {
     if((!chat && !id.includes('g') || chat.msgs.models.length == 0)) {
         await Store.Chat.find(Store.Contact.get(id).id)
         chat = WAPI.getChat(id);
+        console.log("Send Message to id "+id, message, chat);
     }
     if (chat !== undefined) {
             // return WAPI.sendMessageReturnId(chat,message).then(id=>{return id})
@@ -1470,7 +1471,7 @@ window.WAPI.sendImage = async function (imgBase64, chatid, filename, caption, qu
  */
 window.WAPI.setMyName = async function (newName) {
     if(!Store.Versions.default[12].BinaryProtocol) Store.Versions.default[12].BinaryProtocol=new Store.bp(Store.Me.binVersion);
-        return await window.Store.Perfil.setPushname(newName);
+    return (await Store.Versions.default[12].setPushname(newName)).status===200;
 }
 
 /** Change the icon for the group chat
