@@ -321,7 +321,6 @@ function create(_sessionId, config, customUserAgent) {
                 case 27:
                     pureWAPI = _c.sent();
                     if (!pureWAPI) {
-                        config.skipBrokenMethodsCheck = true;
                     }
                     if (!((config === null || config === void 0 ? void 0 : config.skipBrokenMethodsCheck) !== true)) return [3, 29];
                     return [4, launch_checks_1.integrityCheck(waPage, notifier, spinner, debugInfo)];

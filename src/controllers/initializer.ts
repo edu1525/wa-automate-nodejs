@@ -223,7 +223,7 @@ export async function create(_sessionId?: string | ConfigObject, config?: Config
       });
       const pureWAPI = await checkWAPIHash();
       if(!pureWAPI) {
-        config.skipBrokenMethodsCheck = true;
+        // config.skipBrokenMethodsCheck = true;
         // config.skipPatches = true;
       }
       if (config?.skipBrokenMethodsCheck !== true) await integrityCheck(waPage, notifier, spinner, debugInfo);
