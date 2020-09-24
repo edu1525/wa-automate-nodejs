@@ -35,7 +35,11 @@ if (!window.Store||!window.Store.Msg) {
                 { id: "addAndSendMsgToChat", conditions: (module) => (module.addAndSendMsgToChat) ? module.addAndSendMsgToChat : null },
                 { id: "sendMsgToChat", conditions: (module) => (module.sendMsgToChat) ? module.sendMsgToChat : null },
                 { id: "Catalog", conditions: (module) => (module.Catalog) ? module.Catalog : null },
+<<<<<<< HEAD
                 { id: "bp", conditions: (module) => (module.default&&module.default.toString&&module.default.toString().includes('bp_unknown_version')) ? module.default : null },
+=======
+                { id: 'Perfil',conditions: (module) => module.__esModule === true && module.setPushname && !module.getComposeContents? module  : null,},
+>>>>>>> f964a341... update
                 { id: "MsgKey", conditions: (module) => (module.default&&module.default.toString().includes('MsgKey error: obj is null/undefined')) ? module.default : null },
                 { id: "Parser", conditions: (module) => (module.convertToTextWithoutSpecialEmojis) ? module.default : null },
                 { id: "Builders", conditions: (module) => (module.TemplateMessage && module.HydratedFourRowTemplate) ? module : null },
@@ -1470,7 +1474,11 @@ window.WAPI.sendImage = async function (imgBase64, chatid, filename, caption, qu
  */
 window.WAPI.setMyName = async function (newName) {
     if(!Store.Versions.default[12].BinaryProtocol) Store.Versions.default[12].BinaryProtocol=new Store.bp(Store.Me.binVersion);
+<<<<<<< HEAD
     return (await Store.Versions.default[12].setPushname(newName)).status===200;
+=======
+        return await window.Store.Perfil.setPushname(newName);
+>>>>>>> f964a341... update
 }
 
 /** Change the icon for the group chat
